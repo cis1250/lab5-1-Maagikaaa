@@ -38,6 +38,6 @@ def prints(sequence):
     print("the fibonacci sequence is:")
     print(sequence)
 
-terms = get_input()
-fib_sequence = generate_fibonacci(terms)
-print_sequence(fib_sequence)
+term = getinput()
+sequence =fibonacci(term)
+prints(sequence)
