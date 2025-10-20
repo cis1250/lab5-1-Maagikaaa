@@ -9,20 +9,19 @@
 #i rewrote from lab 3 using a function instead
 
 def fibonacci(term):
+    sequence =[]
     n1=0
     n2= 1
     if term==1:
-        print("the sequence is:")
-        print(n1)
+        sequence.append(n1)
     else:
-        print("the sequence is:")
-        print(n1)
-        print(n2)
+        sequence = [n1, n2]
         for _ in range(2, term):
             nth = n1 + n2
-            print(nth)
+            sequence.append(nth)
             n1, n2 = n2, nth
-
+    return sequence
+    
 def getinput():
     while True:
         userinput = input("Type how many terms of the Fibonacci sequence you want here (integers only): ")
@@ -35,5 +34,10 @@ def getinput():
         else:
             print("Invalid input! Please enter an integer.")
 
-terms = getinput()
-fibonacci(terms)
+def prints(sequence):
+    print("the fibonacci sequence is:")
+    print(sequence)
+
+terms = get_input()
+fib_sequence = generate_fibonacci(terms)
+print_sequence(fib_sequence)
