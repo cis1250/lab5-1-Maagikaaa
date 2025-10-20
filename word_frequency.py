@@ -29,27 +29,40 @@ def is_sentence(text):
 
     return True
 
-user_sentence = input("Enter a sentence: ")
+def get_sentence():
+    sentence = input("enter a sentence: ")
+    while not is_sentence(sentence):
+        print("this doesnt meet the criteria for a sentence")
+        sentence = input("enter a sentence: ")
+    return sentence
 
-while (is_sentence(user_sentence) == False):
-    print("This does not meet the criteria for a sentence.")
-    user_sentence = input("Enter a sentence: ")   
+
+def calculate_frequencies(sentence):
+    words = sentence.split()
+    unique_words = []
+    frequencies = []
+
+    for word in words:
+        word = word.strip(".,!?").lower()
+        if word in unique_words:
+            index = unique_words.index(word)
+            frequencies[index] += 1
+        else:
+            unique_words.append(word)
+            frequencies.append(1)
+
+    return unique_words, frequencies
+
+def print_frequencies(words, frequencies):
+    print("Word Frequencies:")
+    for i in range(len(words)):
+        print(f"{words[i]}: {frequencies[i]}")
 
 
-words = user_sentence.split()
+def main():
+    sentence = get_sentence()
+    words, frequencies = calculate_frequencies(sentence)
+    print_frequencies(words, frequencies)
 
-unique_words = []
-frequencies = []
 
-for word in words:
-    word = word.strip(".,!?").lower() 
-    if word in unique_words:
-        index = unique_words.index(word)
-        frequencies[index] += 1
-    else:
-        unique_words.append(word)
-        frequencies.append(1)
-
-print("\nWord Frequencies:")
-for i in range(len(unique_words)):
-    print(f"{unique_words[i]}: {frequencies[i]}")
+main()
